@@ -1,13 +1,22 @@
 'use strict';
 
 function parse(url) {
-    const source = url.split('?'),
-        domainAndPath = source[0].split(/\/[^/]/);
+    const source = url.split('?');
+    const protocolHostPath = source[0].split(/\/\//);
+    const protocol = protocolHostPath[0].slice(0, -1) || '';
+    const hostPath = protocolHostPath[1].split(/\/(.+)/);
+    const host = hostPath[0] || '';
+    const path = hostPath[1] ? hostPath[1].split('/').filter(p => p.length) : [];
+    const query = source[1] ? source[1].split('&').map(q => ({
+        name: q.split('=')[0],
+        value: q.split('=')[1],
+    })) : [];
 
     return {
-        host: source[0],
-        path: [],
-        query: source[1] || []
+        protocol,
+        host,
+        path,
+        query
     };
 }
 
