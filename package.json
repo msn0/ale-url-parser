@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava && npm run lint",
+    "test": "npm run unit && npm run lint",
+    "unit": "ava --verbose",
     "lint": "eslint --fix ."
   },
   "repository": {
