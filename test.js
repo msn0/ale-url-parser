@@ -4,7 +4,11 @@ import { parse, stringify } from '.';
 //Parse
 
 test('should parse protocol', t => {
-    t.is(parse('http://domain.pl/foo?bar').protocol, 'http');
+    t.is(parse('https://domain.pl/foo?bar').protocol, 'https');
+});
+
+test('should parse protocol and default to http when missing', t => {
+    t.is(parse('domain.pl/foo?bar').protocol, 'http');
 });
 
 test('should parse host to object', t => {
