@@ -16,7 +16,7 @@ test('should parse simple query to object', t => {
     t.deepEqual(parse('http://domain.pl/gry/wiedzmin?priceMin=300&priceMax=500'), {
         protocol: 'http',    
         host: 'domain.pl',
-        path: ['gry','wiedzmin'],
+        path: ['gry', 'wiedzmin'],
         query: [{
             name: 'priceMin',
             value: '300'
@@ -42,7 +42,7 @@ test('should parse simple query to object', t => {
     t.deepEqual(parse('http://domain.pl/gry/wiedzmin/'), {
         protocol: 'http',    
         host: 'domain.pl',
-        path: ['gry','wiedzmin'],
+        path: ['gry', 'wiedzmin'],
         query: []
     });
 });
@@ -56,13 +56,13 @@ test('should parse object to url', t => {
         path: [],
         query: []
     }), 'http://domain.pl');
-})
+});
 
 test('should parse simple object to query', t => {
     t.deepEqual(stringify({
         protocol: 'http',    
         host: 'domain.pl',
-        path: ['gry','wiedzmin'],
+        path: ['gry', 'wiedzmin'],
         query: [{
             name: 'priceMin',
             value: '300'
@@ -88,7 +88,7 @@ test('should parse simple object to query', t => {
     t.deepEqual(stringify({
         protocol: 'http',    
         host: 'domain.pl',
-        path: ['gry','wiedzmin'],
+        path: ['gry', 'wiedzmin'],
         query: []
     }), 'http://domain.pl/gry/wiedzmin');
-})
+});

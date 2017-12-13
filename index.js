@@ -9,7 +9,7 @@ function parse(url) {
     const path = hostPath[1] ? hostPath[1].split('/').filter(p => p.length) : [];
     const query = source[1] ? source[1].split('&').map(q => ({
         name: q.split('=')[0],
-        value: q.split('=')[1],
+        value: q.split('=')[1]
     })) : [];
 
     return {
@@ -28,7 +28,7 @@ function stringify(object) {
     resultString += `//${object.host}`;
     
     object.path && object.path.map(p => resultString += `/${p}`);
-    resultString += '?'
+    resultString += '?';
 
     object.query && object.query.map(q => resultString += `${q.name}=${q.value}&`);
     resultString = resultString.slice(0, -1);
