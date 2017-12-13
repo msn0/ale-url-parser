@@ -23,7 +23,9 @@ function parse(url) {
 function stringify(object) {
     let resultString = '';
 
-    resultString = `${object.protocol}://${object.host}`;
+    //TODO: dopisać test na http:
+    object.protocol.indexOf(':') > -1 ? resultString = `${object.protocol}` : resultString = `${object.protocol}:`;
+    resultString += `//${object.host}`;
     
     object.path && object.path.map(p => resultString += `/${p}`);
     resultString += '?'
