@@ -20,4 +20,18 @@ function parse(url) {
     };
 }
 
-module.exports.parse = parse;
+function stringify(object) {
+    let resultString = '';
+
+    resultString = `${object.protocol}://${object.host}`;
+    
+    object.path && object.path.map(p => resultString += `/${p}`);
+    resultString += '?'
+
+    object.query && object.query.map(q => resultString += `${q.name}=${q.value}&`);
+    resultString = resultString.slice(0, -1);
+
+    return resultString;
+}
+
+module.exports = { parse, stringify };
