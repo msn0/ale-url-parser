@@ -1,5 +1,7 @@
 'use strict';
 
+const { stringify } = require('./stringify');
+
 // https://jsperf.com/test-protocol-indexof-vs-regex
 function getProtocol(url) {
 
@@ -38,22 +40,6 @@ function parse(url) {
         path,
         query
     };
-}
-
-function stringify(object) {
-    let resultString = '';
-
-    //TODO: dopisać test na http:
-    object.protocol.indexOf(':') > -1 ? resultString = `${object.protocol}` : resultString = `${object.protocol}:`;
-    resultString += `//${object.host}`;
-
-    object.path && object.path.map(p => resultString += `/${p}`);
-    resultString += '?';
-
-    object.query && object.query.map(q => resultString += `${q.name}=${q.value}&`);
-    resultString = resultString.slice(0, -1);
-
-    return resultString;
 }
 
 module.exports = { parse, stringify };

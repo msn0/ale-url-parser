@@ -1,5 +1,5 @@
 import test from 'ava';
-import { stringify } from '.';
+import { stringify } from './stringify';
 
 test('should parse object to url', t => {
     t.deepEqual(stringify({
