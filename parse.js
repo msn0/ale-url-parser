@@ -11,27 +11,16 @@ function getProtocol(url) {
     return 'http';
 }
 
+// https://jsperf.com/domain-path-parse-indexof-vs-regex
 function getHostAndPath(url) {
-    let domainStartIndex = 0;
-    let domainEndIndex = 0;
-    const urlLength = url.length;
-    const questionMarkIndex = url.indexOf('?');
-    const queryStartIndex = questionMarkIndex ? urlLength : questionMarkIndex;
-    const doubleSlashIndex = url.indexOf('//');
+    const match = /(.*:?\/\/)?([^/^?]*)([^?]*)?/.exec(url);
 
-    if (doubleSlashIndex === -1) {
-        const slashIndex = url.indexOf('/');
-        domainEndIndex = slashIndex === -1 ? url.length : slashIndex;
-    } else {
-        domainStartIndex = doubleSlashIndex + 2;
-        const slashIndex = url.indexOf('/', domainStartIndex);
-        domainEndIndex = slashIndex === -1 ? url.length : slashIndex;
+    if (match) {
+        const host = match[2];
+        const path = match[3] ? match[3].split('/').filter(p => p) : [];
+
+        return [ host, path ];
     }
-
-    return [
-        url.substring(domainStartIndex, domainEndIndex),
-        url.substring(domainEndIndex, queryStartIndex).split('/').filter(p => p)
-    ];
 }
 
 function getQueryParams(queryString) {
