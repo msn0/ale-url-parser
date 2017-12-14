@@ -1,47 +1,43 @@
 import test from 'ava';
 import { stringify } from './stringify';
 
-test('parse object with empty protocol', t => {
-    t.deepEqual(stringify({
-        protocol: '',
-        host: 'domain.lol',
-        path: [],
-        query: {}
-    }), '//domain.lol');
-});
-
 test('parse object with http protocol', t => {
     t.deepEqual(stringify({
         protocol: 'http',
-        host: 'domain.lol',
-        path: [],
-        query: {}
+        host: 'domain.lol'
     }), 'http://domain.lol');
 });
 
 test('parse object with https protocol', t => {
     t.deepEqual(stringify({
         protocol: 'https',
-        host: 'domain.lol',
-        path: [],
-        query: {}
+        host: 'domain.lol'
     }), 'https://domain.lol');
+});
+
+test('parse default to http protocol', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol'
+    }), 'http://domain.lol');
+});
+
+test('parse object with empty protocol', t => {
+    t.deepEqual(stringify({
+        protocol: '',
+        host: 'domain.lol'
+    }), '//domain.lol');
 });
 
 test('parse object with path', t => {
     t.deepEqual(stringify({
-        protocol: 'https',
         host: 'domain.lol',
-        path: ['foo', 'bar'],
-        query: {}
-    }), 'https://domain.lol/foo/bar');
+        path: ['foo', 'bar']
+    }), 'http://domain.lol/foo/bar');
 });
 
 test('parse object with query', t => {
     t.deepEqual(stringify({
-        protocol: 'http',
         host: 'domain.lol',
-        path: [],
         query: {
             'priceMin': '300',
             'priceMax': '500'
@@ -51,7 +47,6 @@ test('parse object with query', t => {
 
 test('parse object with query and path', t => {
     t.deepEqual(stringify({
-        protocol: 'http',
         host: 'domain.lol',
         path: ['games', 'wiedzmin'],
         query: {
@@ -63,27 +58,19 @@ test('parse object with query and path', t => {
 
 test('parse object with boolean query params', t => {
     t.deepEqual(stringify({
-        protocol: 'http',
         host: 'domain.lol',
-        path: ['foo'],
         query: {
             'foo': '',
             'bar': ''
         }
-    }), 'http://domain.lol/foo?foo&bar');
+    }), 'http://domain.lol?foo&bar');
 });
 
 test('parse object with hash', t => {
     t.deepEqual(stringify({
-        protocol: 'http',
         host: 'domain.lol',
-        path: ['foo'],
-        query: {
-            'foo': '',
-            'bar': ''
-        },
         hash: 'test'
-    }), 'http://domain.lol/foo?foo&bar#test');
+    }), 'http://domain.lol#test');
 });
 
 test('should sort params using compareFunction if given', t => {
@@ -94,9 +81,7 @@ test('should sort params using compareFunction if given', t => {
 
     t.deepEqual(
         stringify({
-            protocol: 'http',
             host: 'domain.lol',
-            path: ['foo'],
             query: {
                 'second': '2',
                 'third': '3',
@@ -104,6 +89,6 @@ test('should sort params using compareFunction if given', t => {
                 'fourth': '4'
             }
         }, { compareFunction }),
-        'http://domain.lol/foo?first=1&second=2&third=3&fourth=4'
+        'http://domain.lol?first=1&second=2&third=3&fourth=4'
     );
 });

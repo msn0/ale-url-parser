@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.stringify = function({ protocol, host, path, query, hash }, options = {}) {
+module.exports.stringify = function({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
     const result = [];
 
     if (protocol === '') {
