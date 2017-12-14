@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/msn0/qs.git"
   },
-  "author": "",
+  "contributors": [
+      "Adrian Rydzyński",
+      "Michał Jezierski <ambinanitelo@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/msn0/qs/issues"
