@@ -27,7 +27,7 @@ test('should parse empty path', t => {
 
 test('should parse query string', t => {
     t.deepEqual(
-        parse('http://domain.lol/games/wiedzmin?priceMin=300&price-max=500'), [{
+        parse('http://domain.lol/games/wiedzmin?priceMin=300&price-max=500').query, [{
             name: 'priceMin',
             value: '300'
         }, {
@@ -39,7 +39,7 @@ test('should parse query string', t => {
 
 test('should parse query string and decode components', t => {
     t.deepEqual(
-        parse('https://domain.lol?lorem=ipsum%20dolor%20/%20sit%20&%20amet'),
+        parse('https://domain.lol?lorem=ipsum%20dolor%20/%20sit%20%26%20amet').query,
         [{
             name: 'lorem',
             value: 'ipsum dolor / sit & amet'
@@ -48,5 +48,15 @@ test('should parse query string and decode components', t => {
 });
 
 test('should parse empty query string', t => {
-    t.deepEqual(parse('https://domain.lol/foo/bar/'), []);
+    t.deepEqual(parse('https://domain.lol/foo/bar/').query, []);
+});
+
+test('should parse query string and decode components', t => {
+    t.deepEqual(
+        parse('https://domain.lol?lorem=ipsum%20dolor%20/%20sit%20%26%20amet').query,
+        [{
+            name: 'lorem',
+            value: 'ipsum dolor / sit & amet'
+        }]
+    );
 });
