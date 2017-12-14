@@ -15,12 +15,12 @@ module.exports.stringify = function({ protocol, host, path, query, hash }) {
         result.push('/', path.join('/'));
     }
 
-    if (query.length > 0) {
-        const queryString = query.map(({ name, value }) => {
-            if (value) {
-                return `${name}=${value}`;
+    if (Object.keys(query).length > 0) {
+        const queryString = Object.keys(query).map(key => {
+            if (query[key]) {
+                return `${key}=${query[key]}`;
             }
-            return name;
+            return key;
         }).join('&');
         result.push('?', queryString);
     }

@@ -24,12 +24,19 @@ function getHostAndPath(url) {
 }
 
 function getQueryParams(queryString) {
-    return queryString.split('&').map(q => {
-        const param = q.split('=');
-        const name = param[0];
-        const value = param[1] ? decodeURIComponent(param[1]) : '';
-        return { name, value };
-    });
+    return queryString
+        .split('&')
+        .map(q => {
+            const param = q.split('=');
+            const name = param[0];
+            const value = param[1] ? decodeURIComponent(param[1]) : '';
+
+            return { name, value };
+        })
+        .reduce((acc, next) => {
+            acc[next.name] = next.value;
+            return acc;
+        }, {});
 }
 
 function getQueryAndHash(url) {
@@ -37,7 +44,7 @@ function getQueryAndHash(url) {
     const queryAndHash = [];
 
     if (!source) {
-        queryAndHash.push([], '');
+        queryAndHash.push({}, '');
     } else if (source.indexOf('#') === -1) {
         queryAndHash.push(getQueryParams(source), '');
     } else {

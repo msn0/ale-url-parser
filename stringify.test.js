@@ -6,7 +6,7 @@ test('parse object with empty protocol', t => {
         protocol: '',
         host: 'domain.lol',
         path: [],
-        query: []
+        query: {}
     }), '//domain.lol');
 });
 
@@ -15,7 +15,7 @@ test('parse object with http protocol', t => {
         protocol: 'http',
         host: 'domain.lol',
         path: [],
-        query: []
+        query: {}
     }), 'http://domain.lol');
 });
 
@@ -24,7 +24,7 @@ test('parse object with https protocol', t => {
         protocol: 'https',
         host: 'domain.lol',
         path: [],
-        query: []
+        query: {}
     }), 'https://domain.lol');
 });
 
@@ -33,7 +33,7 @@ test('parse object with path', t => {
         protocol: 'https',
         host: 'domain.lol',
         path: ['foo', 'bar'],
-        query: []
+        query: {}
     }), 'https://domain.lol/foo/bar');
 });
 
@@ -42,13 +42,10 @@ test('parse object with query', t => {
         protocol: 'http',
         host: 'domain.lol',
         path: [],
-        query: [{
-            name: 'priceMin',
-            value: '300'
-        }, {
-            name: 'priceMax',
-            value: '500'
-        }]
+        query: {
+            'priceMin': '300',
+            'priceMax': '500'
+        }
     }), 'http://domain.lol?priceMin=300&priceMax=500');
 });
 
@@ -57,13 +54,10 @@ test('parse object with query and path', t => {
         protocol: 'http',
         host: 'domain.lol',
         path: ['games', 'wiedzmin'],
-        query: [{
-            name: 'priceMin',
-            value: '300'
-        }, {
-            name: 'priceMax',
-            value: '500'
-        }]
+        query: {
+            'priceMin': '300',
+            'priceMax': '500'
+        }
     }), 'http://domain.lol/games/wiedzmin?priceMin=300&priceMax=500');
 });
 
@@ -72,13 +66,10 @@ test('parse object with boolean query params', t => {
         protocol: 'http',
         host: 'domain.lol',
         path: ['foo'],
-        query: [{
-            name: 'foo',
-            value: ''
-        }, {
-            name: 'bar',
-            value: ''
-        }]
+        query: {
+            'foo': '',
+            'bar': ''
+        }
     }), 'http://domain.lol/foo?foo&bar');
 });
 
@@ -87,13 +78,10 @@ test('parse object with hash', t => {
         protocol: 'http',
         host: 'domain.lol',
         path: ['foo'],
-        query: [{
-            name: 'foo',
-            value: ''
-        }, {
-            name: 'bar',
-            value: ''
-        }],
+        query: {
+            'foo': '',
+            'bar': ''
+        },
         hash: 'test'
     }), 'http://domain.lol/foo?foo&bar#test');
 });
