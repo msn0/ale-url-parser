@@ -25,10 +25,12 @@ function getHostAndPath(url) {
 function getQuery(url) {
     const source = url.split('?');
 
-    return source[1] ? source[1].split('&').map(q => ({
-        name: q.split('=')[0],
-        value: decodeURIComponent(q.split('=')[1])
-    })) : [];
+    return source[1] ? source[1].split('&').map(q => {
+        const param = q.split('=');
+        const name = param[0];
+        const value = param[1] ? decodeURIComponent(param[1]) : '';
+        return { name, value };
+    }) : [];
 }
 
 module.exports.parse = function(url) {

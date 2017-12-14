@@ -57,6 +57,16 @@ test('should parse query string and decode uri components', t => {
     );
 });
 
+test('should parse boolean query string parameters', t => {
+    t.deepEqual(
+        parse('https://domain.lol?lorem').query,
+        [{
+            name: 'lorem',
+            value: ''
+        }]
+    );
+});
+
 test('should parse empty query string', t => {
     t.deepEqual(parse('https://domain.lol/foo/bar/').query, []);
 });
