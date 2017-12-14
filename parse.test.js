@@ -70,3 +70,11 @@ test('should parse boolean query string parameters', t => {
 test('should parse empty query string', t => {
     t.deepEqual(parse('https://domain.lol/foo/bar/').query, []);
 });
+
+test('should parse hash', t => {
+    t.deepEqual(parse('https://domain.lol/foo?bar=1#baz').hash, 'baz');
+});
+
+test('should parse empty hash', t => {
+    t.deepEqual(parse('https://domain.lol/foo?bar=1').hash, '');
+});
