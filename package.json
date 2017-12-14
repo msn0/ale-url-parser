@@ -1,7 +1,7 @@
 {
-  "name": "qs",
+  "name": "ale-url-parser",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fast url parser",
   "main": "index.js",
   "scripts": {
     "test": "npm run unit && npm run lint",
