@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.stringify = function({ protocol, host, path, query }) {
+module.exports.stringify = function({ protocol, host, path, query, hash }) {
     const result = [];
 
     if (protocol === '') {
@@ -23,6 +23,10 @@ module.exports.stringify = function({ protocol, host, path, query }) {
             return name;
         }).join('&');
         result.push('?', queryString);
+    }
+
+    if (hash) {
+        result.push('#' + hash);
     }
 
     return result.join('');

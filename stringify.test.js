@@ -81,3 +81,19 @@ test('parse object with boolean query params', t => {
         }]
     }), 'http://domain.lol/foo?foo&bar');
 });
+
+test('parse object with hash', t => {
+    t.deepEqual(stringify({
+        protocol: 'http',
+        host: 'domain.lol',
+        path: ['foo'],
+        query: [{
+            name: 'foo',
+            value: ''
+        }, {
+            name: 'bar',
+            value: ''
+        }],
+        hash: 'test'
+    }), 'http://domain.lol/foo?foo&bar#test');
+});
