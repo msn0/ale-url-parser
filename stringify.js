@@ -1,17 +1,25 @@
 'use strict';
 
 module.exports.stringify = function(object) {
-    let resultString = '';
 
-    //TODO: dopisać test na http:
-    object.protocol.indexOf(':') > -1 ? resultString = `${object.protocol}` : resultString = `${object.protocol}:`;
-    resultString += `//${object.host}`;
+    const result = [];
 
-    object.path && object.path.map(p => resultString += `/${p}`);
-    resultString += '?';
+    if (object.protocol === '') {
+        result.push('//');
+    } else {
+        result.push(object.protocol, '://');
+    }
 
-    object.query && object.query.map(q => resultString += `${q.name}=${q.value}&`);
-    resultString = resultString.slice(0, -1);
+    result.push(object.host);
 
-    return resultString;
+    if (object.path.length > 0) {
+        result.push('/', object.path.join('/'));
+    }
+
+    if (object.query.length > 0) {
+        const queryString = object.query.map(q => `${q.name}=${q.value}`).join('&');
+        result.push('?', queryString);
+    }
+
+    return result.join('');
 };

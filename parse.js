@@ -2,7 +2,6 @@
 
 // https://jsperf.com/test-protocol-indexof-vs-regex
 function getProtocol(url) {
-
     if (url.indexOf('//') === 0) {
         return '';
     } else if (url.indexOf('https://') === 0) {

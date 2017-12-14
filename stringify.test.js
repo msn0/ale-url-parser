@@ -1,7 +1,16 @@
 import test from 'ava';
 import { stringify } from './stringify';
 
-test('should parse object to url', t => {
+test('parse object with empty protocol', t => {
+    t.deepEqual(stringify({
+        protocol: '',
+        host: 'domain.lol',
+        path: [],
+        query: []
+    }), '//domain.lol');
+});
+
+test('parse object with http protocol', t => {
     t.deepEqual(stringify({
         protocol: 'http',
         host: 'domain.lol',
@@ -10,20 +19,25 @@ test('should parse object to url', t => {
     }), 'http://domain.lol');
 });
 
-test('should parse simple object to query', t => {
+test('parse object with https protocol', t => {
     t.deepEqual(stringify({
-        protocol: 'http',
+        protocol: 'https',
         host: 'domain.lol',
-        path: ['gry', 'wiedzmin'],
-        query: [{
-            name: 'priceMin',
-            value: '300'
-        }, {
-            name: 'priceMax',
-            value: '500'
-        }]
-    }), 'http://domain.lol/gry/wiedzmin?priceMin=300&priceMax=500');
+        path: [],
+        query: []
+    }), 'https://domain.lol');
+});
 
+test('parse object with path', t => {
+    t.deepEqual(stringify({
+        protocol: 'https',
+        host: 'domain.lol',
+        path: ['foo', 'bar'],
+        query: []
+    }), 'https://domain.lol/foo/bar');
+});
+
+test('parse object with query', t => {
     t.deepEqual(stringify({
         protocol: 'http',
         host: 'domain.lol',
@@ -35,12 +49,20 @@ test('should parse simple object to query', t => {
             name: 'priceMax',
             value: '500'
         }]
-    }), 'http://domain.lol?priceMin=300&priceMax=500'),
+    }), 'http://domain.lol?priceMin=300&priceMax=500');
+});
 
+test('parse object with query and path', t => {
     t.deepEqual(stringify({
         protocol: 'http',
         host: 'domain.lol',
-        path: ['gry', 'wiedzmin'],
-        query: []
-    }), 'http://domain.lol/gry/wiedzmin');
+        path: ['games', 'wiedzmin'],
+        query: [{
+            name: 'priceMin',
+            value: '300'
+        }, {
+            name: 'priceMax',
+            value: '500'
+        }]
+    }), 'http://domain.lol/games/wiedzmin?priceMin=300&priceMax=500');
 });

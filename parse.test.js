@@ -47,11 +47,7 @@ test('should parse query string and decode components', t => {
     );
 });
 
-test('should parse empty query string', t => {
-    t.deepEqual(parse('https://domain.lol/foo/bar/').query, []);
-});
-
-test('should parse query string and decode components', t => {
+test('should parse query string and decode uri components', t => {
     t.deepEqual(
         parse('https://domain.lol?lorem=ipsum%20dolor%20/%20sit%20%26%20amet').query,
         [{
@@ -59,4 +55,8 @@ test('should parse query string and decode components', t => {
             value: 'ipsum dolor / sit & amet'
         }]
     );
+});
+
+test('should parse empty query string', t => {
+    t.deepEqual(parse('https://domain.lol/foo/bar/').query, []);
 });
