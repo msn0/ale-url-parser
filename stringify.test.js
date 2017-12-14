@@ -85,3 +85,25 @@ test('parse object with hash', t => {
         hash: 'test'
     }), 'http://domain.lol/foo?foo&bar#test');
 });
+
+test('should sort params using compareFunction if given', t => {
+    const order = ['first', 'second', 'third', 'fourth'];
+    const compareFunction = (a, b) => {
+        return order.indexOf(a) > order.indexOf(b);
+    };
+
+    t.deepEqual(
+        stringify({
+            protocol: 'http',
+            host: 'domain.lol',
+            path: ['foo'],
+            query: {
+                'second': '2',
+                'third': '3',
+                'first': '1',
+                'fourth': '4'
+            }
+        }, { compareFunction }),
+        'http://domain.lol/foo?first=1&second=2&third=3&fourth=4'
+    );
+});

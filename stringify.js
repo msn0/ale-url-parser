@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.stringify = function({ protocol, host, path, query, hash }) {
+module.exports.stringify = function({ protocol, host, path, query, hash }, options = {}) {
     const result = [];
 
     if (protocol === '') {
@@ -16,12 +16,16 @@ module.exports.stringify = function({ protocol, host, path, query, hash }) {
     }
 
     if (Object.keys(query).length > 0) {
-        const queryString = Object.keys(query).map(key => {
-            if (query[key]) {
-                return `${key}=${query[key]}`;
-            }
-            return key;
-        }).join('&');
+        const queryString = Object.keys(query)
+            .sort(options.compareFunction || function () {})
+            .map(key => {
+                if (query[key]) {
+                    return `${key}=${query[key]}`;
+                }
+                return key;
+            })
+            .join('&');
+
         result.push('?', queryString);
     }
 
