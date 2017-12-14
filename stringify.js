@@ -1,23 +1,22 @@
 'use strict';
 
-module.exports.stringify = function(object) {
-
+module.exports.stringify = function({ protocol, host, path, query }) {
     const result = [];
 
-    if (object.protocol === '') {
+    if (protocol === '') {
         result.push('//');
     } else {
-        result.push(object.protocol, '://');
+        result.push(protocol, '://');
     }
 
-    result.push(object.host);
+    result.push(host);
 
-    if (object.path.length > 0) {
-        result.push('/', object.path.join('/'));
+    if (path.length > 0) {
+        result.push('/', path.join('/'));
     }
 
-    if (object.query.length > 0) {
-        const queryString = object.query.map(({ name, value }) => {
+    if (query.length > 0) {
+        const queryString = query.map(({ name, value }) => {
             if (value) {
                 return `${name}=${value}`;
             }
