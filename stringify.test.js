@@ -66,3 +66,18 @@ test('parse object with query and path', t => {
         }]
     }), 'http://domain.lol/games/wiedzmin?priceMin=300&priceMax=500');
 });
+
+test('parse object with boolean query params', t => {
+    t.deepEqual(stringify({
+        protocol: 'http',
+        host: 'domain.lol',
+        path: ['foo'],
+        query: [{
+            name: 'foo',
+            value: ''
+        }, {
+            name: 'bar',
+            value: ''
+        }]
+    }), 'http://domain.lol/foo?foo&bar');
+});

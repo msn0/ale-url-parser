@@ -17,7 +17,12 @@ module.exports.stringify = function(object) {
     }
 
     if (object.query.length > 0) {
-        const queryString = object.query.map(q => `${q.name}=${q.value}`).join('&');
+        const queryString = object.query.map(({ name, value }) => {
+            if (value) {
+                return `${name}=${value}`;
+            }
+            return name;
+        }).join('&');
         result.push('?', queryString);
     }
 
