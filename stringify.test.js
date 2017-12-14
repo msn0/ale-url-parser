@@ -39,8 +39,8 @@ test('parse object with query', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',
         query: {
-            'priceMin': '300',
-            'priceMax': '500'
+            priceMin: '300',
+            priceMax: '500'
         }
     }), 'http://domain.lol?priceMin=300&priceMax=500');
 });
@@ -50,8 +50,8 @@ test('parse object with query and path', t => {
         host: 'domain.lol',
         path: ['games', 'wiedzmin'],
         query: {
-            'priceMin': '300',
-            'priceMax': '500'
+            priceMin: '300',
+            priceMax: '500'
         }
     }), 'http://domain.lol/games/wiedzmin?priceMin=300&priceMax=500');
 });
@@ -60,8 +60,8 @@ test('parse object with boolean query params', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',
         query: {
-            'foo': '',
-            'bar': ''
+            foo: '',
+            bar: ''
         }
     }), 'http://domain.lol?foo&bar');
 });
@@ -83,10 +83,10 @@ test('should sort params using compareFunction if given', t => {
         stringify({
             host: 'domain.lol',
             query: {
-                'second': '2',
-                'third': '3',
-                'first': '1',
-                'fourth': '4'
+                second: '2',
+                third: '3',
+                first: '1',
+                fourth: '4'
             }
         }, { compareFunction }),
         'http://domain.lol?first=1&second=2&third=3&fourth=4'
