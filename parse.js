@@ -23,19 +23,19 @@ function getHostAndPath(url) {
     }
 }
 
-module.exports.parse = function(url) {
-    const [ host, path ] = getHostAndPath(url);
+function getQuery(url) {
     const source = url.split('?');
 
-    const query = source[1] ? source[1].split('&').map(q => ({
+    return source[1] ? source[1].split('&').map(q => ({
         name: q.split('=')[0],
-        value: q.split('=')[1]
+        value: decodeURIComponent(q.split('=')[1])
     })) : [];
+}
 
-    return {
-        protocol: getProtocol(url),
-        host,
-        path,
-        query
-    };
+module.exports.parse = function(url) {
+    const protocol = getProtocol(url);
+    const [ host, path ] = getHostAndPath(url);
+    const query = getQuery(url);
+
+    return { protocol, host, path, query };
 };
