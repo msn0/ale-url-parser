@@ -26,15 +26,11 @@ function getHostAndPath(url) {
 function getQueryParams(queryString) {
     return queryString
         .split('&')
-        .map(q => {
-            const param = q.split('=');
+        .reduce((acc, next) => {
+            const param = next.split('=');
             const name = param[0];
             const value = param[1] ? decodeURIComponent(param[1]) : '';
-
-            return { name, value };
-        })
-        .reduce((acc, next) => {
-            acc[next.name] = next.value;
+            acc[name] = value;
             return acc;
         }, {});
 }
