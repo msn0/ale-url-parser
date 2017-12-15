@@ -45,6 +45,15 @@ test('parse object with query', t => {
     }), 'http://domain.lol?priceMin=300&priceMax=500');
 });
 
+test('parse object with multiple value for single query key', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            foo: ['bar1', 'bar2']
+        }
+    }), 'http://domain.lol?foo=bar1&foo=bar2');
+});
+
 test('parse object with query and path', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',

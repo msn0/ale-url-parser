@@ -19,7 +19,11 @@ module.exports.stringify = function({ protocol = 'http', host = '', path = [], q
         const queryString = Object.keys(query)
             .sort(options.compareFunction || function () {})
             .map(key => {
-                if (query[key]) {
+                if (Array.isArray(query[key])) {
+                    return query[key].map(val => {
+                        return `${key}=${val}`;
+                    }).join('&');
+                } else if (query[key]) {
                     return `${key}=${query[key]}`;
                 }
                 return key;
