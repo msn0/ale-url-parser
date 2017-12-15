@@ -1,6 +1,6 @@
 {
   "name": "ale-url-parser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fast url parser",
   "main": "index.js",
   "scripts": {
@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msn0/ale-url-parser-.git"
+    "url": "git+https://github.com/msn0/ale-url-parser.git"
   },
   "contributors": [
-      "Adrian Rydzyński",
-      "Michał Jezierski <ambinanitelo@gmail.com>"
+    "Adrian Rydzyński",
+    "Michał Jezierski <ambinanitelo@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/msn0/ale-url-parser-/issues"
+    "url": "https://github.com/msn0/ale-url-parser/issues"
   },
-  "homepage": "https://github.com/msn0/ale-url-parser-#readme",
+  "homepage": "https://github.com/msn0/ale-url-parser#readme",
   "devDependencies": {
     "ava": "^0.24.0",
     "eslint-config-helmut": "^2.2.0",
