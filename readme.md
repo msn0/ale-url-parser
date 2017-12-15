@@ -119,6 +119,8 @@ stringify({
 
 #### Sort query params with custom compareFunction
 
+Sorting query params is disabled by default. You can define you own sorting method by passing `compareFunction`:
+
 ```js
 const order = ['first', 'second', 'third', 'fourth'];
 stringify({
