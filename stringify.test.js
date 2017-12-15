@@ -75,6 +75,15 @@ test('parse object with boolean query params', t => {
     }), 'http://domain.lol?foo&bar');
 });
 
+test('should encode query params', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            foo: ['foo & bar', '☺']
+        }
+    }), 'http://domain.lol?foo=foo%20%26%20bar&foo=%E2%98%BA');
+});
+
 test('parse object with hash', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',
@@ -84,9 +93,7 @@ test('parse object with hash', t => {
 
 test('should sort params using compareFunction if given', t => {
     const order = ['first', 'second', 'third', 'fourth'];
-    const compareFunction = (a, b) => {
-        return order.indexOf(a) > order.indexOf(b);
-    };
+    const compareFunction = (a, b) => order.indexOf(a) > order.indexOf(b);
 
     t.deepEqual(
         stringify({

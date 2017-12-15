@@ -1,5 +1,9 @@
 'use strict';
 
+function encode (value) {
+    return encodeURIComponent(value);
+}
+
 module.exports.stringify = function({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
     const result = [];
 
@@ -20,11 +24,9 @@ module.exports.stringify = function({ protocol = 'http', host = '', path = [], q
             .sort(options.compareFunction || function () {})
             .map(key => {
                 if (Array.isArray(query[key])) {
-                    return query[key].map(val => {
-                        return `${key}=${val}`;
-                    }).join('&');
+                    return query[key].map(value => `${key}=${encode(value)}`).join('&');
                 } else if (query[key]) {
-                    return `${key}=${query[key]}`;
+                    return `${key}=${encode(query[key])}`;
                 }
                 return key;
             })
