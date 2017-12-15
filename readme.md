@@ -1,6 +1,6 @@
 # ale-url-parser
 
-Url parser built with performance and small size in mind.
+Url parser and stringifier built with performance and small size in mind.
 
 ## Installation
 
