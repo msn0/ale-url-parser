@@ -50,6 +50,12 @@ test('should parse boolean query string parameters', t => {
     });
 });
 
+test('should parse multi-value query string parameters', t => {
+    t.deepEqual(parse('https://domain.lol?foo=1&foo=2').query, {
+        foo: ['1', '2']
+    });
+});
+
 test('should parse empty query string', t => {
     t.deepEqual(parse('https://domain.lol/foo/bar/').query, {});
 });

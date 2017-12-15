@@ -30,7 +30,13 @@ function getQueryParams(queryString) {
             const param = next.split('=');
             const name = param[0];
             const value = param[1] ? decodeURIComponent(param[1]) : '';
-            acc[name] = value;
+            if (Array.isArray(acc[name])) {
+                acc[name].push(value);
+            } else if (acc.hasOwnProperty(name)) {
+                acc[name] = [ acc[name], value ];
+            } else {
+                acc[name] = value;
+            }
             return acc;
         }, {});
 }
