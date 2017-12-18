@@ -71,6 +71,20 @@ parse('domain.lol?foo=1&foo=2&bar=3');
 }
 ```
 
+#### Parsing relative urls
+
+```js
+parse('?foo=1');
+
+{
+    protocol: 'http',
+    host: '',
+    path: [], 
+    query: { foo: '1' }, 
+    hash: ''
+}
+```
+
 ### stringify :: Object -> String
 
 Stringify url object to url string.
@@ -116,6 +130,16 @@ stringify({
 "https://domain.lol?foo=1&foo=2&bar=3"
 ```
 
+#### Build relative urls
+
+```js
+stringify({
+    path: ['lorem', 'ipsum'],
+    query: { foo: '1', bar: '2' }
+});
+
+"/lorem/ipsum?foo=1&bar=2"
+```
 
 #### Sort query params with custom compareFunction
 
