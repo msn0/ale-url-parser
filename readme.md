@@ -125,7 +125,7 @@ Sorting query params is disabled by default. You can define your own sorting met
 const order = ['first', 'second', 'third', 'fourth'];
 stringify({
     host: 'domain.lol',
-    query: { third: '3', first: '1', fourth: '4', second: '2'  }
+    query: { third: '3', first: '1', fourth: '4', second: '2' }
 }, {
     compareFunction: (a, b) => order.indexOf(a) > order.indexOf(b)
 });
