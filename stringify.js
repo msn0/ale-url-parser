@@ -1,19 +1,21 @@
 'use strict';
 
-function encode (value) {
+function encode(value) {
     return encodeURIComponent(value);
 }
 
-module.exports.stringify = function({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
+module.exports.stringify = function ({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
     const result = [];
 
-    if (protocol === '') {
-        result.push('//');
-    } else {
-        result.push(protocol, '://');
-    }
+    if (host) {
+        if (protocol === '') {
+            result.push('//');
+        } else {
+            result.push(protocol, '://');
+        }
 
-    result.push(host);
+        result.push(host);
+    }
 
     if (path.length > 0) {
         result.push('/', path.join('/'));
@@ -21,7 +23,7 @@ module.exports.stringify = function({ protocol = 'http', host = '', path = [], q
 
     if (Object.keys(query).length > 0) {
         const queryString = Object.keys(query)
-            .sort(options.compareFunction || function () {})
+            .sort(options.compareFunction || function () { })
             .map(key => {
                 if (Array.isArray(query[key])) {
                     return query[key].map(value => `${key}=${encode(value)}`).join('&');

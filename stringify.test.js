@@ -108,3 +108,22 @@ test('should sort params using compareFunction if given', t => {
         'http://domain.lol?first=1&second=2&third=3&fourth=4'
     );
 });
+
+test('parse object with path to relative url', t => {
+    t.deepEqual(stringify({
+        path: ['foo', 'bar']
+    }), '/foo/bar');
+});
+
+test('parse object with query to relative url', t => {
+    t.deepEqual(stringify({
+        query: { foo: '1', bar: '2' }
+    }), '?foo=1&bar=2');
+});
+
+test('parse object with path and query to relative url', t => {
+    t.deepEqual(stringify({
+        path: ['foo', 'bar'],
+        query: { foo: '1', bar: '2' }
+    }), '/foo/bar?foo=1&bar=2');
+});
