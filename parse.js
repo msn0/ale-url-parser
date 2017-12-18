@@ -45,6 +45,8 @@ function getQueryAndHash(url) {
     const source = url.split('?')[1];
     const queryAndHash = [];
 
+    console.log(url, source);
+
     if (!source) {
         queryAndHash.push({}, '');
     } else if (source.indexOf('#') === -1) {

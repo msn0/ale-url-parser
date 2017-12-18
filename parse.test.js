@@ -67,3 +67,16 @@ test('should parse hash', t => {
 test('should parse empty hash', t => {
     t.deepEqual(parse('https://domain.lol/foo?bar=1').hash, '');
 });
+
+test('parse relative url with path', t => {
+    t.deepEqual(parse('/foo/bar').path, ['foo', 'bar']);
+});
+
+test('parse relative url with query', t => {
+    t.deepEqual(parse('?foo=1&bar=2').query, { foo: '1', bar: '2' });
+});
+
+test('parse relative url with path and query', t => {
+    t.deepEqual(parse('/foo/bar').path, ['foo', 'bar']);
+    t.deepEqual(parse('?foo=1&bar=2').query, { foo: '1', bar: '2' });
+});
