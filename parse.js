@@ -1,5 +1,3 @@
-'use strict';
-
 // https://jsperf.com/test-protocol-indexof-vs-regex
 function getProtocol(url) {
     if (url.indexOf('//') === 0) {
@@ -65,7 +63,7 @@ function getQueryAndHash(url) {
     return queryAndHash;
 }
 
-module.exports.parse = function(url) {
+export function parse(url) {
     const protocol = getProtocol(url);
     const [ host, path ] = getHostAndPath(url);
     const [ query, hash ] = getQueryAndHash(url);
@@ -80,4 +78,4 @@ module.exports.parse = function(url) {
     }
 
     return result;
-};
+}
