@@ -8,7 +8,7 @@ function decode(value) {
     return decodeURIComponent(value);
 }
 
-module.exports.stringify = function ({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
+module.exports.stringify = function ({ protocol = 'http', host = '', path = [], query = {}, hash }, options = {}) {
     const result = [];
 
     if (host) {

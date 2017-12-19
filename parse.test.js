@@ -91,7 +91,7 @@ test('should parse multi-value query string parameters', t => {
 });
 
 test('should parse empty query string', t => {
-    t.deepEqual(parse('https://domain.lol/foo/bar/').query, {});
+    t.deepEqual(parse('https://domain.lol/foo/bar/').query, undefined);
 });
 
 test('should parse hash', t => {
@@ -99,7 +99,7 @@ test('should parse hash', t => {
 });
 
 test('should parse empty hash', t => {
-    t.deepEqual(parse('https://domain.lol/foo?bar=1').hash, '');
+    t.deepEqual(parse('https://domain.lol/foo?bar=1').hash, undefined);
 });
 
 test('parse relative url with path', t => {
