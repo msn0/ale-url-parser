@@ -27,7 +27,14 @@ function getQueryParams(queryString) {
     return queryString
         .split('&')
         .reduce((acc, next) => {
-            const param = next.split('=');
+            const indexOfEqualsSign = next.indexOf('=');
+            const param = [];
+            if (indexOfEqualsSign !== -1) {
+                param.push(next.substr(0, indexOfEqualsSign), next.substr(indexOfEqualsSign + 1));
+            } else {
+                param.push(next);
+            }
+
             const name = decodeURIComponent(param[0]);
             const value = param[1] ? decodeURIComponent(param[1]) : '';
             if (Array.isArray(acc[name])) {
@@ -42,7 +49,7 @@ function getQueryParams(queryString) {
 }
 
 function getQueryAndHash(url) {
-    const source = url.split('?')[1];
+    const source = url.split(/\?(.*)/)[1];
     const queryAndHash = [];
 
     if (!source) {

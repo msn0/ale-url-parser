@@ -25,13 +25,27 @@ test('should parse empty path', t => {
     t.deepEqual(parse('http://domain.lol').path, []);
 });
 
-test('should parse urls with slashes', t => {
-    t.deepEqual(parse('https://domain.lol?route=http://foo.ninja/bar#foobar'), {
+// https://tools.ietf.org/html/rfc3986#section-3.4
+test('should allow unescaped reserved chars in query string values', t => {
+    t.deepEqual(parse('https://domain.lol?route=http://foo.ninja/bar?baz=1#foobar'), {
         protocol: 'https',
         host: 'domain.lol',
         path: [],
         query: {
-            route: 'http://foo.ninja/bar'
+            route: 'http://foo.ninja/bar?baz=1'
+        },
+        hash: 'foobar'
+    });
+});
+
+// https://tools.ietf.org/html/rfc3986#section-3.4
+test('should allow escaped reserved chars in query string values', t => {
+    t.deepEqual(parse('https://domain.lol?route=http%3A%2F%2Ffoo.ninja%2Fbar%3Fbaz%3D1#foobar'), {
+        protocol: 'https',
+        host: 'domain.lol',
+        path: [],
+        query: {
+            route: 'http://foo.ninja/bar?baz=1'
         },
         hash: 'foobar'
     });
