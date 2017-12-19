@@ -1,5 +1,3 @@
-'use strict';
-
 function encode(value) {
     return encodeURIComponent(value);
 }
@@ -8,7 +6,7 @@ function decode(value) {
     return decodeURIComponent(value);
 }
 
-module.exports.stringify = function ({ protocol = 'http', host = '', path = [], query = {}, hash }, options = {}) {
+export function stringify({ protocol = 'http', host = '', path = [], query = {}, hash }, options = {}) {
     const result = [];
 
     if (host) {
@@ -46,4 +44,4 @@ module.exports.stringify = function ({ protocol = 'http', host = '', path = [], 
     }
 
     return result.join('');
-};
+}
