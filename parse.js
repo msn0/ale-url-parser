@@ -13,7 +13,7 @@ function getProtocol(url) {
 
 // https://jsperf.com/domain-path-parse-indexof-vs-regex
 function getHostAndPath(url) {
-    const match = /(.*:?\/\/)?([^/^?]*)([^?]*)?/.exec(url);
+    const match = /([^/]*:?\/\/)?([^/^?]*)([^?]*)?/.exec(url);
 
     if (match) {
         const host = match[2];

@@ -25,6 +25,18 @@ test('should parse empty path', t => {
     t.deepEqual(parse('http://domain.lol').path, []);
 });
 
+test('should parse urls with slashes', t => {
+    t.deepEqual(parse('https://domain.lol?route=http://foo.ninja/bar#foobar'), {
+        protocol: 'https',
+        host: 'domain.lol',
+        path: [],
+        query: {
+            route: 'http://foo.ninja/bar'
+        },
+        hash: 'foobar'
+    });
+});
+
 test('should parse query string', t => {
     t.deepEqual(parse('http://domain.lol/games/wiedzmin?priceMin=300&price-max=500').query, {
         priceMin: '300',
