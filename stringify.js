@@ -26,11 +26,11 @@ module.exports.stringify = function ({ protocol = 'http', host = '', path = [], 
             .sort(options.compareFunction || function () { })
             .map(key => {
                 if (Array.isArray(query[key])) {
-                    return query[key].map(value => `${key}=${encode(value)}`).join('&');
+                    return query[key].map(value => `${encode(key)}=${encode(value)}`).join('&');
                 } else if (query[key]) {
-                    return `${key}=${encode(query[key])}`;
+                    return `${encode(key)}=${encode(query[key])}`;
                 }
-                return key;
+                return encode(key);
             })
             .join('&');
 

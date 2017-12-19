@@ -32,9 +32,17 @@ test('should parse query string', t => {
     });
 });
 
-test('should parse query string and decode components', t => {
+test('should parse query string and decode query value', t => {
     t.deepEqual(parse('https://domain.lol?lorem=ipsum%20dolor%20/%20sit%20%26%20amet').query, {
         lorem: 'ipsum dolor / sit & amet'
+    });
+});
+
+test('should parse query string and decode query name', t => {
+    t.deepEqual(parse('https://domain.lol?foo%5B%5D=1&bar%5B%5D&baz%5B%5D=2&baz%5B%5D=3').query, {
+        'foo[]': '1',
+        'bar[]': '',
+        'baz[]': ['2', '3']
     });
 });
 

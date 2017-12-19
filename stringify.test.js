@@ -75,13 +75,25 @@ test('parse object with boolean query params', t => {
     }), 'http://domain.lol?foo&bar');
 });
 
-test('should encode query params', t => {
+test('should encode query values', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',
         query: {
             foo: ['foo & bar', '☺']
         }
     }), 'http://domain.lol?foo=foo%20%26%20bar&foo=%E2%98%BA');
+});
+
+test('should encode query names', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            'foo[]': '1',
+            'bar[]': '',
+            'baz[]': ['2', '3']
+
+        }
+    }), 'http://domain.lol?foo%5B%5D=1&bar%5B%5D&baz%5B%5D=2&baz%5B%5D=3');
 });
 
 test('parse object with hash', t => {

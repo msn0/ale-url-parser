@@ -28,7 +28,7 @@ function getQueryParams(queryString) {
         .split('&')
         .reduce((acc, next) => {
             const param = next.split('=');
-            const name = param[0];
+            const name = decodeURIComponent(param[0]);
             const value = param[1] ? decodeURIComponent(param[1]) : '';
             if (Array.isArray(acc[name])) {
                 acc[name].push(value);
