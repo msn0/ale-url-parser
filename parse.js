@@ -56,7 +56,7 @@ function getQueryAndHash(url) {
     if (!source) {
         queryAndHash.push({}, '');
     } else if (source.indexOf('#') === -1) {
-        queryAndHash.push(getQueryParams(source), '');
+        queryAndHash.push(getQueryParams(source));
     } else {
         const [ queryString, hash ] = source.split('#');
         queryAndHash.push(getQueryParams(queryString), hash);
@@ -69,6 +69,15 @@ module.exports.parse = function(url) {
     const protocol = getProtocol(url);
     const [ host, path ] = getHostAndPath(url);
     const [ query, hash ] = getQueryAndHash(url);
+    const result = { protocol, host, path };
 
-    return { protocol, host, path, query, hash };
+    if (hash) {
+        result.hash = hash;
+    }
+
+    if (Object.keys(query).length) {
+        result.query = query;
+    }
+
+    return result;
 };
