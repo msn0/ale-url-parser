@@ -4,6 +4,10 @@ function encode(value) {
     return encodeURIComponent(value);
 }
 
+function decode(value) {
+    return decodeURIComponent(value);
+}
+
 module.exports.stringify = function ({ protocol = 'http', host = '', path = [], query = {}, hash = '' }, options = {}) {
     const result = [];
 
@@ -26,11 +30,11 @@ module.exports.stringify = function ({ protocol = 'http', host = '', path = [], 
             .sort(options.compareFunction || function () { })
             .map(key => {
                 if (Array.isArray(query[key])) {
-                    return query[key].map(value => `${encode(key)}=${encode(value)}`).join('&');
+                    return query[key].map(value => `${encode(key)}=${encode(decode(value))}`).join('&');
                 } else if (query[key]) {
-                    return `${encode(key)}=${encode(query[key])}`;
+                    return `${encode(key)}=${encode(decode(query[key]))}`;
                 }
-                return encode(key);
+                return encode(decode(key));
             })
             .join('&');
 

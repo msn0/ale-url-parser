@@ -139,3 +139,27 @@ test('parse object with path and query to relative url', t => {
         query: { foo: '1', bar: '2' }
     }), '/foo/bar?foo=1&bar=2');
 });
+
+// https://tools.ietf.org/html/rfc3986#section-3.4
+test('should allow unescaped reserved chars in query string values', t => {
+    t.deepEqual(stringify({
+        protocol: 'https',
+        host: 'domain.lol',
+        query: {
+            route: 'http://foo.ninja/bar?baz=1'
+        },
+        hash: 'foobar'
+    }), 'https://domain.lol?route=http%3A%2F%2Ffoo.ninja%2Fbar%3Fbaz%3D1#foobar');
+});
+
+// https://tools.ietf.org/html/rfc3986#section-3.4
+test('should allow escaped reserved chars in query string values', t => {
+    t.deepEqual(stringify({
+        protocol: 'https',
+        host: 'domain.lol',
+        query: {
+            route: 'http%3A%2F%2Ffoo.ninja%2Fbar%3Fbaz%3D1'
+        },
+        hash: 'foobar'
+    }), 'https://domain.lol?route=http%3A%2F%2Ffoo.ninja%2Fbar%3Fbaz%3D1#foobar');
+});

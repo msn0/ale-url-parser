@@ -24,6 +24,7 @@ function getHostAndPath(url) {
 }
 
 function getQueryParams(queryString) {
+    // TODO: compare with https://url.spec.whatwg.org/#concept-url-parser
     return queryString
         .split('&')
         .reduce((acc, next) => {
