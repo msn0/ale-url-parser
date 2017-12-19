@@ -1,5 +1,27 @@
 'use strict';
 
+const allowedReservedQueryValues = {
+    '%2F': '/',
+    '%3A': ':',
+    '%3D': '=',
+    '%3F': '?',
+    '%40': '@',
+    '%24': '$',
+    '%2B': '+',
+    '%2C': ',',
+    '%3B': ';'
+};
+
+const allowedReservedRegExp = new RegExp(Object.keys(allowedReservedQueryValues).join('|'), 'gi');
+
+function allowReserved(value) {
+    Object.keys(allowedReservedQueryValues).forEach(key => {
+        value = value.replace(allowedReservedRegExp, allowedReservedQueryValues[key]);
+    });
+
+    return value;
+}
+
 function encode(value) {
     return encodeURIComponent(value);
 }
@@ -26,9 +48,11 @@ module.exports.stringify = function ({ protocol = 'http', host = '', path = [], 
             .sort(options.compareFunction || function () { })
             .map(key => {
                 if (Array.isArray(query[key])) {
-                    return query[key].map(value => `${encode(key)}=${encode(value)}`).join('&');
+                    return query[key].map(value => {
+                        return `${encode(key)}=${allowReserved(encode(value))}`;
+                    }).join('&');
                 } else if (query[key]) {
-                    return `${encode(key)}=${encode(query[key])}`;
+                    return `${encode(key)}=${allowReserved(encode(query[key]))}`;
                 }
                 return encode(key);
             })

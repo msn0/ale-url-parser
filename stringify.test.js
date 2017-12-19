@@ -91,7 +91,6 @@ test('should encode query names', t => {
             'foo[]': '1',
             'bar[]': '',
             'baz[]': ['2', '3']
-
         }
     }), 'http://domain.lol?foo%5B%5D=1&bar%5B%5D&baz%5B%5D=2&baz%5B%5D=3');
 });
@@ -101,6 +100,20 @@ test('parse object with hash', t => {
         host: 'domain.lol',
         hash: 'test'
     }), 'http://domain.lol#test');
+});
+
+// https://tools.ietf.org/html/rfc3986#section-3.4
+test('pchar, "/" and "?" are allowed to be unencoded as per rfc3986#section-3.4', t => {
+    t.deepEqual(stringify({
+        protocol: 'https',
+        host: 'domain.lol',
+        query: {
+            pchars: '/?:@!$&\'()*+,;=a',
+            // route: 'http://foo.ninja/bar?baz=1',
+            foo: '2'
+        },
+        hash: 'foobar'
+    }), 'https://domain.lol?pchars=/?:@!$&\'()*+,;=a&foo=2#foobar');
 });
 
 test('should sort params using compareFunction if given', t => {
