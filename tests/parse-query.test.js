@@ -2,6 +2,9 @@ import test from 'ava';
 import { parseQuery } from '../lib/parse-query';
 
 const testCases = [{
+    queryString: '',
+    queryObject: {}
+}, {
     queryString: 'foo=bar&baz=qux',
     queryObject: {
         foo: 'bar',
@@ -10,8 +13,7 @@ const testCases = [{
 }, {
     queryString: 'foo[]=bar&foo[]=baz',
     queryObject: {
-        foo: 'bar',
-        baz: 'qux'
+        'foo[]': ['bar', 'baz']
     }
 }];
 
