@@ -1,7 +1,7 @@
 import test from 'ava';
-import { parse, stringify } from './';
+import { parse, stringify } from '../';
 
-[
+const testCases = [
     {
         urlString: 'http://domain.ninja/foo/bar',
         urlObject: {
@@ -20,14 +20,29 @@ import { parse, stringify } from './';
                 bar: ['1', '2']
             }
         }
+    }, {
+        urlString: '//domain.ninja/foo/bar/baz?route=https%3A%2F%2Fapi.domain.ninja%2Ffoo%3Fbar%5B%5D%3D1&bar%5B%5D=2&bar%5B%5D=3',
+        urlObject: {
+            protocol: '',
+            host: 'domain.ninja',
+            path: ['foo', 'bar', 'baz'],
+            query: {
+                route: 'https://api.domain.ninja/foo?bar[]=1',
+                'bar[]': ['2', '3']
+            }
+        }
     }
-].forEach(({ urlString, urlObject }, index) => {
+];
+
+testCases.forEach(({ urlString, urlObject }, index) => {
     test(`should produce expected result #${index + 1}`, t => {
-        // a one way check operation
         t.deepEqual(parse(urlString), urlObject);
         t.is(stringify(urlObject), urlString);
+    });
+});
 
-        // check identity
+testCases.forEach(({ urlString, urlObject }, index) => {
+    test(`should be inversible #${index + 1}`, t => {
         t.is(stringify(parse(urlString)), urlString);
         t.deepEqual(parse(stringify(urlObject)), urlObject);
     });
