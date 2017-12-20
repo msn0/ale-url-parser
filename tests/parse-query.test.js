@@ -7,6 +7,12 @@ const testCases = [{
         foo: 'bar',
         baz: 'qux'
     }
+}, {
+    queryString: 'foo[]=bar&foo[]=baz',
+    queryObject: {
+        foo: 'bar',
+        baz: 'qux'
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
