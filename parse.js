@@ -48,19 +48,18 @@ function getQueryParams(queryString) {
 }
 
 function getQueryAndHash(url) {
-    const source = url.split(/\?(.*)/)[1];
-    const queryAndHash = [];
+    // https://jsperf.com/split-vs-indexof-question-mark-match
+    const indexOfQuestionSign = url.indexOf('?');
+    const source = indexOfQuestionSign !== -1 && url.slice(indexOfQuestionSign + 1);
 
     if (!source) {
-        queryAndHash.push({}, '');
+        return [ {}, '' ];
     } else if (source.indexOf('#') === -1) {
-        queryAndHash.push(getQueryParams(source));
+        return [ getQueryParams(source) ];
     } else {
         const [ queryString, hash ] = source.split('#');
-        queryAndHash.push(getQueryParams(queryString), hash);
+        return [ getQueryParams(queryString), hash ];
     }
-
-    return queryAndHash;
 }
 
 export function parse(url) {
