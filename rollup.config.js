@@ -5,10 +5,10 @@ const babel = require('rollup-plugin-babel');
 const uglify = require('rollup-plugin-uglify');
 
 module.exports = {
-    input: './index.js',
+    input: './lib/index.js',
     output: {
         format: 'umd',
-        file: './index.umd.js'
+        file: './lib/index.umd.js'
     },
     name: 'ale-url-parser',
     strict: false,

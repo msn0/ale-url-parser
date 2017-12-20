@@ -2,8 +2,8 @@
   "name": "ale-url-parser",
   "version": "0.7.0",
   "description": "Fast url parser",
-  "main": "index.umd.js",
-  "module": "index.js",
+  "main": "lib/index.umd.js",
+  "module": "lib/index.js",
   "scripts": {
     "test": "npm run unit && npm run lint",
     "unit": "ava --verbose --fail-fast",
