@@ -40,7 +40,7 @@ parse('//domain.lol');
 {
     protocol: '',
     host: 'domain.lol',
-    path: []
+    path: [], query: {}, hash: ''
 }
 ```
 
@@ -52,7 +52,7 @@ parse('domain.lol');
 {
     protocol: 'http',
     host: 'domain.lol',
-    path: []
+    path: [], query: {}, hash: ''
 }
 ```
 
@@ -66,7 +66,8 @@ parse('domain.lol?foo=1&foo=2&bar=3');
     protocol: 'http',
     host: 'domain.lol',
     path: [],
-    query: { foo: ['1', '2'], bar: '3' }
+    query: { foo: ['1', '2'], bar: '3' },
+    hash: ''
 }
 ```
 
@@ -79,7 +80,8 @@ parse('?foo=1');
     protocol: 'http',
     host: '',
     path: [],
-    query: { foo: '1' }
+    query: { foo: '1' },
+    hash: ''
 }
 ```
 
