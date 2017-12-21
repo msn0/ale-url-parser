@@ -13,6 +13,10 @@ test('should return empty protocol for URL that starts with //', t => {
     t.is(parse('//domain.lol/foo?bar').protocol, '');
 });
 
+test.failing('should parse custom protocol', t => {
+    t.is(parse('proto-star://domain.lol/foo?bar').protocol, 'proto-star');
+});
+
 test('should parse host', t => {
     t.is(parse('http://domain.lol/').host, 'domain.lol');
 });

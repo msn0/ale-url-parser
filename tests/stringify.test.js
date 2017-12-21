@@ -28,6 +28,13 @@ test('parse object with empty protocol', t => {
     }), '//domain.lol');
 });
 
+test('should stringify custom protocol', t => {
+    t.deepEqual(stringify({
+        protocol: 'proto-star',
+        host: 'domain.lol'
+    }), 'proto-star://domain.lol');
+});
+
 test('parse object with path', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',
