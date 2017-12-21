@@ -58,6 +58,13 @@ const testCases = [{
     queryObject: {
         foo: ['http://domain.lol/foo/bar?foo=1', '2']
     }
+}, {
+    queryString: 'a%3Db=c&f%E2%98%85%E2%98%85=bar&b★z=★',
+    queryObject: {
+        'a=b': 'c',
+        'f★★': 'bar',
+        'b★z': '★'
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
