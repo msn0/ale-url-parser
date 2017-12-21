@@ -59,11 +59,12 @@ const testCases = [{
         foo: ['http://domain.lol/foo/bar?foo=1', '2']
     }
 }, {
-    queryString: 'a%3Db=c&f%E2%98%85%E2%98%85=bar&b★z=★',
+    queryString: 'a%3Db=c&f%E2%98%85%E2%98%85=bar&b★z=★&a=%3F&a=%3D',
     queryObject: {
         'a=b': 'c',
         'f★★': 'bar',
-        'b★z': '★'
+        'b★z': '★',
+        'a': ['?', '=']
     }
 }];
 
