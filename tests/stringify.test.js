@@ -163,3 +163,14 @@ test('should allow escaped reserved chars in query string values', t => {
         hash: 'foobar'
     }), 'https://domain.lol?route=http%3A%2F%2Ffoo.ninja%2Fbar%3Fbaz%3D1#foobar');
 });
+
+test.failing('allowed reserved chars should be stringified as unescaped', t => {
+    t.deepEqual(stringify({
+        protocol: 'https',
+        host: 'domain.lol',
+        query: {
+            route: 'http://foo.ninja/bar?baz=1'
+        },
+        hash: 'foobar'
+    }), 'https://domain.lol?route=http://foo.ninja/bar?baz=1#foobar');
+});
