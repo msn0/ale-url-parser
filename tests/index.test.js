@@ -3,6 +3,14 @@ import { parse, stringify } from '../lib/';
 
 const testCases = [
     {
+        urlString: 'http://domain.ninja',
+        urlObject: {
+            protocol: 'http',
+            host: 'domain.ninja',
+            path: []
+        }
+    },
+    {
         urlString: 'http://domain.ninja/foo/bar',
         urlObject: {
             protocol: 'http',
