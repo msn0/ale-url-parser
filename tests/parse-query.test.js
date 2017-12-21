@@ -54,3 +54,9 @@ testCases.forEach(({ queryString, queryObject }, index) => {
         t.deepEqual(parseQuery(queryString), queryObject);
     });
 });
+
+test.failing('should handle + correctly', t => {
+    t.deepEqual(parseQuery('a=b+c'), {
+        a: 'b c'
+    });
+});
