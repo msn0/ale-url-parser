@@ -7,7 +7,9 @@ const testCases = [
         urlObject: {
             protocol: 'http',
             host: 'domain.ninja',
-            path: []
+            path: [],
+            query: {},
+            hash: ''
         }
     },
     {
@@ -15,7 +17,9 @@ const testCases = [
         urlObject: {
             protocol: 'http',
             host: 'domain.ninja',
-            path: ['foo', 'bar']
+            path: ['foo', 'bar'],
+            query: {},
+            hash: ''
         }
     }, {
         urlString: 'https://domain.ninja/foo/bar?a=b%3Dc%3Dd%3Ffoo&bar=1&bar=2',
@@ -26,7 +30,8 @@ const testCases = [
             query: {
                 a: 'b=c=d?foo',
                 bar: ['1', '2']
-            }
+            },
+            hash: ''
         }
     }, {
         urlString: '//domain.ninja/foo/bar/baz?route=https%3A%2F%2Fapi.domain.ninja%2Ffoo%3Fbar%5B%5D%3D1&bar%5B%5D=2&bar%5B%5D=3',
@@ -37,7 +42,8 @@ const testCases = [
             query: {
                 route: 'https://api.domain.ninja/foo?bar[]=1',
                 'bar[]': ['2', '3']
-            }
+            },
+            hash: ''
         }
     }
 ];
