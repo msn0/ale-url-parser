@@ -12,6 +12,35 @@ const testCases = [{
     queryObject: {
         'foo[]': ['bar', 'baz']
     }
+}, {
+    queryString: 'a=b=c&d=e=f',
+    queryObject: {
+        a: 'b=c',
+        d: 'e=f'
+    }
+}, {
+    queryString: 'a&b',
+    queryObject: {
+        a: '',
+        b: ''
+    }
+}, {
+    queryString: 'a=b%3Dc',
+    queryObject: {
+        a: 'b=c'
+    }
+}, {
+    queryString: 'a=http://domain.lol/foo/bar?foo=1&bar=2',
+    queryObject: {
+        a: 'http://domain.lol/foo/bar?foo=1',
+        bar: '2'
+    }
+}, {
+    queryString: 'a=http%3A%2F%2Fdomain.lol%2Ffoo%2Fbar%3Ffoo%3D1&bar=2',
+    queryObject: {
+        a: 'http://domain.lol/foo/bar?foo=1',
+        bar: '2'
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
