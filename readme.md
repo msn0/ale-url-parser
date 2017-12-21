@@ -1,4 +1,4 @@
-# ale-url-parser
+# ale-url-parser [![Build Status](https://travis-ci.org/msn0/ale-url-parser.svg?branch=master)](http://travis-ci.org/msn0/ale-url-parser)
 
 Url parser and stringifier built with performance and small size in mind.
 
@@ -65,7 +65,7 @@ parse('domain.lol?foo=1&foo=2&bar=3');
 {
     protocol: 'http',
     host: 'domain.lol',
-    path: [], 
+    path: [],
     query: { foo: ['1', '2'], bar: '3' }
 }
 ```
@@ -78,7 +78,7 @@ parse('?foo=1');
 {
     protocol: 'http',
     host: '',
-    path: [], 
+    path: [],
     query: { foo: '1' }
 }
 ```
