@@ -47,6 +47,17 @@ const testCases = [{
         a: '♡',
         b: '★'
     }
+}, {
+    queryString: 'a=http://domain.lol/foo/bar?foo=1&foo=2',
+    queryObject: {
+        a: 'http://domain.lol/foo/bar?foo=1',
+        foo: '2'
+    }
+}, {
+    queryString: 'foo=http://domain.lol/foo/bar?foo=1&foo=2',
+    queryObject: {
+        foo: ['http://domain.lol/foo/bar?foo=1', '2']
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
