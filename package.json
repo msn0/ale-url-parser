@@ -3,7 +3,6 @@
   "version": "0.9.1",
   "description": "Fast url parser",
   "main": "lib/index.umd.js",
-  "module": "lib/index.js",
   "scripts": {
     "test": "npm run unit && npm run lint",
     "unit": "ava --verbose --fail-fast",
