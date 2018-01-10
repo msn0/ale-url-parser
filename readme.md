@@ -124,10 +124,10 @@ stringify({
 stringify({
     protocol: 'https',
     host: 'domain.lol',
-    query: { foo: ['1', '2'], bar: '3' }
+    query: { foo: ['1', '2'], bar: '/baz' }
 });
 
-"https://domain.lol?foo=1&foo=2&bar=3"
+"https://domain.lol?foo=1&foo=2&bar=%2Fbaz"
 ```
 
 #### Build relative urls
