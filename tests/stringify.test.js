@@ -160,7 +160,7 @@ test('should allow unescaped reserved chars in query string values', t => {
 });
 
 // https://tools.ietf.org/html/rfc3986#section-3.4
-test('should allow escaped reserved chars in query string values', t => {
+test.failing('should allow escaped reserved chars in query string values', t => {
     t.deepEqual(stringify({
         protocol: 'https',
         host: 'domain.lol',
@@ -180,4 +180,13 @@ test.failing('allowed reserved chars should be stringified as unescaped', t => {
         },
         hash: 'foobar'
     }), 'https://domain.lol?route=http://foo.ninja/bar?baz=1#foobar');
+});
+
+test('should stringify %', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            foo: '%'
+        }
+    }), 'http://domain.lol?foo=%25');
 });

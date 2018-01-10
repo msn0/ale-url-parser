@@ -5,7 +5,7 @@
   "main": "lib/index.umd.js",
   "scripts": {
     "test": "npm run unit && npm run lint",
-    "unit": "ava --verbose --fail-fast",
+    "unit": "ava --verbose",
     "lint": "eslint --fix .",
     "prepare": "rollup -c"
   },
