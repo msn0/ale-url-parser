@@ -190,3 +190,12 @@ test('should stringify %', t => {
         }
     }), 'http://domain.lol?foo=%25');
 });
+
+test.failing('should stringify encoded query value', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            foo: '%3D'
+        }
+    }), 'http://domain.lol?foo=%3D');
+});
