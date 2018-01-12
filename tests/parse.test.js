@@ -118,3 +118,7 @@ test('parse relative url with path and query', t => {
     t.deepEqual(parse('/foo/bar').path, ['foo', 'bar']);
     t.deepEqual(parse('?foo=1&bar=2').query, { foo: '1', bar: '2' });
 });
+
+test('parse +', t => {
+    t.deepEqual(parse('?string=test+%2B+promo').query, { string: 'test + promo' });
+});

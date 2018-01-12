@@ -73,7 +73,7 @@ testCases.forEach(({ queryString, queryObject }, index) => {
     });
 });
 
-test.failing('should handle + correctly', t => {
+test('should handle + correctly', t => {
     t.deepEqual(parseQuery('a=b+c'), {
         a: 'b c'
     });
