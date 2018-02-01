@@ -191,6 +191,15 @@ test('should stringify %', t => {
     }), 'http://domain.lol?foo=%25');
 });
 
+test('should stringify malformed %', t => {
+    t.deepEqual(stringify({
+        host: 'domain.lol',
+        query: {
+            foo: 'R%E9age'
+        }
+    }), 'http://domain.lol?foo=R%25E9age');
+});
+
 test.failing('should stringify encoded query value', t => {
     t.deepEqual(stringify({
         host: 'domain.lol',

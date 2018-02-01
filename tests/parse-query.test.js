@@ -65,6 +65,11 @@ const testCases = [{
         'f★★': 'bar',
         'b★z': '★'
     }
+}, {
+    queryString: 'foo=R%E9age',
+    queryObject: {
+        foo: 'R%E9age'
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
