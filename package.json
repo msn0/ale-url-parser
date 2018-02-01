@@ -1,6 +1,6 @@
 {
   "name": "ale-url-parser",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Fast url parser",
   "main": "lib/index.umd.js",
   "scripts": {
