@@ -70,6 +70,12 @@ const testCases = [{
     queryObject: {
         foo: 'R%E9age'
     }
+}, {
+    queryString: '%EA=%E0&ê=à',
+    queryObject: {
+        '%EA': '%E0',
+        'ê': 'à'
+    }
 }];
 
 testCases.forEach(({ queryString, queryObject }, index) => {
