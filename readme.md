@@ -161,6 +161,23 @@ stringify({
 
 `ale-url-parser` is limited to be used with `http` and `https` protocols though context-aware protocol guess is supported by passing an empty string to `stringify` function, i.e. `protocol: ''`.
 
+## Benchmarks
+
+```sh
+$ npm t && npm run prepare && node ./tests/benchmark-parse.js
+
+[simple] ale-url-parser x 92,867 ops/sec ±1.21% (87 runs sampled)
+[simple] url x 44,822 ops/sec ±1.14% (88 runs sampled)
+[simple] query-string x 29,612 ops/sec ±1.08% (83 runs sampled)
+[simple] fast-url-parser x 130,799 ops/sec ±1.03% (88 runs sampled)
+[simple] Fastest is fast-url-parser
+[complex] ale-url-parser x 14,087 ops/sec ±1.00% (88 runs sampled)
+[complex] url x 5,509 ops/sec ±0.98% (86 runs sampled)
+[complex] query-string x 3,976 ops/sec ±1.17% (87 runs sampled)
+[complex] fast-url-parser x 11,231 ops/sec ±1.05% (86 runs sampled)
+[complex] Fastest is ale-url-parser
+```
+
 ## License
 
 MIT
