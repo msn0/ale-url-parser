@@ -177,6 +177,7 @@ $ npm t && npm run prepare && node ./tests/benchmark-parse.js
 [complex] fast-url-parser x 11,231 ops/sec ±1.05% (86 runs sampled)
 [complex] Fastest is ale-url-parser
 ```
+https://jsperf.com/ale-url-parser-vs-new-url
 
 ## License
 
