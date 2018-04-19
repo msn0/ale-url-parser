@@ -8,9 +8,9 @@ const testCases = [{
         baz: 'qux'
     }
 }, {
-    queryString: 'foo[]=bar&foo[]=baz',
+    queryString: 'foo[]=bar&foo[]=baz&foo[]=qux',
     queryObject: {
-        'foo[]': ['bar', 'baz']
+        'foo[]': ['bar', 'baz', 'qux']
     }
 }, {
     queryString: 'a=b=c&d=e=f',
