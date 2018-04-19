@@ -1,6 +1,6 @@
 {
   "name": "ale-url-parser",
-  "version": "0.9.5",
+  "version": "0.10.0",
   "description": "Fast url parser",
   "main": "lib/index.umd.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "benchmark": "^2.1.4",
     "eslint-config-helmut": "^3.0.0",
     "fast-url-parser": "^1.1.3",
+    "query-string": "^6.0.0",
     "rollup": "^0.58.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^9.1.0",
@@ -45,7 +46,5 @@
     ],
     "babel": "inherit"
   },
-  "dependencies": {
-    "query-string": "^5.0.1"
-  }
+  "dependencies": {}
 }
