@@ -45,6 +45,34 @@ const testCases = [
             },
             hash: ''
         }
+    }, {
+        urlString: 'https://some.very.long.domain1.com/some/really/long/path/lorem/ipsum/dolor/sit/amet?foo=bar&baz=qux&order=m&stan=nowe&dostawa-kurier=1&price_from=11&price_to=22&freeShipping=1&super-sprzedawca=1&city=Gda%C5%84sk&startingTime=3&a%5B%5D=1&a%5B%5D=2&a%5B%5D=3&a%5B%5D=4&a%5B%5D=5&a%5B%5D=6&a%5B%5D=7&a%5B%5D=8&b%5B%5D=1&b%5B%5D=3&b%5B%5D=5&b%5B%5D=7&b%3D%5B%5D=2&b%3D%5B%5D=4&b%3D%5B%5D=6&b%3D%5B%5D=8&route=https%3A%2F%2Fdomain.lol%2Ffoo%2Fbar%2Fbaz%2F%3Fadvert%3D1&route=some-other-route#hash-bash-mome-long-and-ugly____--%3F--ha-s-h',
+        urlObject: {
+            protocol: 'https',
+            host: 'some.very.long.domain1.com',
+            path: ['some', 'really', 'long', 'path', 'lorem', 'ipsum', 'dolor', 'sit', 'amet'],
+            query: {
+                foo: 'bar',
+                baz: 'qux',
+                order: 'm',
+                stan: 'nowe',
+                'dostawa-kurier': '1',
+                price_from: '11',
+                price_to: '22',
+                freeShipping: '1',
+                'super-sprzedawca': '1',
+                city: 'Gdańsk',
+                startingTime: '3',
+                'a[]': ['1', '2', '3', '4', '5', '6', '7', '8'],
+                'b[]': ['1', '3', '5', '7'],
+                'b=[]': ['2', '4', '6', '8'],
+                route: [
+                    'https://domain.lol/foo/bar/baz/?advert=1',
+                    'some-other-route'
+                ]
+            },
+            hash: 'hash-bash-mome-long-and-ugly____--%3F--ha-s-h'
+        }
     }
 ];
 
