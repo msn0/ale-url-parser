@@ -1,5 +1,5 @@
 import test from 'ava';
-import { parse } from '../lib/parse';
+import { parse } from '../src/parse';
 
 test('should parse protocol', t => {
     t.is(parse('https://domain.lol/foo?bar').protocol, 'https');

@@ -1,5 +1,5 @@
 const Benchmark = require('benchmark');
-const ale = require('../lib/index.umd');
+const ale = require('../lib/ale-url-parser.umd');
 const url = require('url');
 const queryString = require('query-string');
 const fastUrlParser = require('fast-url-parser');
