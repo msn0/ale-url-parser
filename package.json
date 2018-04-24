@@ -1,13 +1,13 @@
 {
   "name": "ale-url-parser",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Fast url parser",
-  "main": "lib/index.umd.js",
+  "main": "lib/ale-url-parser.umd.js",
   "scripts": {
     "test": "npm run unit && npm run lint",
     "unit": "ava --verbose",
     "lint": "eslint --fix .",
-    "prepare": "rollup -c"
+    "prepare": "microbundle -i ./src/index.js -o ./lib"
   },
   "repository": {
     "type": "git",
@@ -27,16 +27,11 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
-    "babelrc-rollup": "^3.0.0",
     "benchmark": "^2.1.4",
     "eslint-config-helmut": "^3.0.0",
     "fast-url-parser": "^1.1.3",
-    "query-string": "^6.0.0",
-    "rollup": "^0.58.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "microbundle": "^0.4.4",
+    "query-string": "^6.0.0"
   },
   "ava": {
     "powerAssert": false,

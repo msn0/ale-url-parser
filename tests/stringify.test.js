@@ -1,5 +1,5 @@
 import test from 'ava';
-import { stringify } from '../lib/stringify';
+import { stringify } from '../src/stringify';
 
 test('parse object with http protocol', t => {
     t.deepEqual(stringify({

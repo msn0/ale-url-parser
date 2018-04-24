@@ -1,5 +1,5 @@
 import test from 'ava';
-import { parseQuery } from '../lib/parse-query';
+import { parseQuery } from '../src/parse-query';
 
 const testCases = [{
     queryString: 'foo=bar&baz=qux',
