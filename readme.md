@@ -1,6 +1,6 @@
 # ale-url-parser [![Build Status](https://travis-ci.org/msn0/ale-url-parser.svg?branch=master)](http://travis-ci.org/msn0/ale-url-parser)
 
-🍺Top fermented URL parser and stringifier built with performance and small size in mind.
+🍺 Top fermented URL parser and stringifier built with performance and small size (1.7KB) in mind.
 
 ## Installation
 
