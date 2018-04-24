@@ -1,5 +1,5 @@
 import test from 'ava';
-import { parse, stringify } from '../src/index';
+import { parse, stringify } from '../src';
 
 const testCases = [
     {
