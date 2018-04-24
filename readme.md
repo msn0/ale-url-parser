@@ -166,15 +166,15 @@ stringify({
 ```sh
 $ npm t && npm run prepare && node ./tests/benchmark-parse.js
 
-[simple] ale-url-parser x 92,867 ops/sec ±1.21% (87 runs sampled)
-[simple] url x 44,822 ops/sec ±1.14% (88 runs sampled)
-[simple] query-string x 29,612 ops/sec ±1.08% (83 runs sampled)
-[simple] fast-url-parser x 130,799 ops/sec ±1.03% (88 runs sampled)
+[simple] ale-url-parser x 83,552 ops/sec ±1.49% (87 runs sampled)
+[simple] url x 41,948 ops/sec ±0.97% (87 runs sampled)
+[simple] query-string x 29,136 ops/sec ±0.98% (88 runs sampled)
+[simple] fast-url-parser x 122,476 ops/sec ±0.88% (88 runs sampled)
 [simple] Fastest is fast-url-parser
-[complex] ale-url-parser x 14,087 ops/sec ±1.00% (88 runs sampled)
-[complex] url x 5,509 ops/sec ±0.98% (86 runs sampled)
-[complex] query-string x 3,976 ops/sec ±1.17% (87 runs sampled)
-[complex] fast-url-parser x 11,231 ops/sec ±1.05% (86 runs sampled)
+[complex] ale-url-parser x 14,342 ops/sec ±1.50% (87 runs sampled)
+[complex] url x 5,410 ops/sec ±1.60% (85 runs sampled)
+[complex] query-string x 3,693 ops/sec ±0.98% (88 runs sampled)
+[complex] fast-url-parser x 10,205 ops/sec ±0.99% (88 runs sampled)
 [complex] Fastest is ale-url-parser
 ```
 https://jsperf.com/ale-url-parser-vs-new-url
