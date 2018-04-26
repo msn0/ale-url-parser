@@ -1,3 +1,9 @@
+<h1 align="center">
+    <br>
+    <img width=91 height=243 src="https://raw.githubusercontent.com/msn0/ale-url-parser/master/logo.png" alt="teti" />
+    <br>
+</h1>
+
 # ale-url-parser [![Build Status](https://travis-ci.org/msn0/ale-url-parser.svg?branch=master)](http://travis-ci.org/msn0/ale-url-parser)
 
 🍺 Top fermented URL parser and stringifier built with performance and small size (1.7KB) in mind.
