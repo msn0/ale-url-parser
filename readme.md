@@ -32,7 +32,7 @@ parse('http://domain.lol/lorem/ipsum?foo=1&bar=2#baz');
 {
     protocol: 'http',
     host: 'domain.lol',
-    path: ['foo', 'bar'],
+    path: ['lorem', 'ipsum'],
     query: { foo: '1', bar: '2' },
     hash: 'baz'
 }
@@ -105,7 +105,7 @@ const { stringify } = require('ale-url-parser');
 stringify({
     protocol: 'https',
     host: 'domain.lol',
-    path: ['foo', 'bar'],
+    path: ['lorem', 'ipsum'],
     query: { foo: '1', bar: '2' },
     hash: 'baz'
 });
