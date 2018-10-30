@@ -185,6 +185,14 @@ $ npm t && npm run prepare && node ./tests/benchmark-parse.js
 ```
 https://jsperf.com/ale-url-parser-vs-new-url
 
+## TypeScript definitions
+
+Type definitions for `ale-url-parser` are declared in `DefinitelyTyped` repository. We recommend installing `@types/ale-url-parser` for a better experience
+
+```sh
+$ npm i @types/ale-url-parser -D
+```
+
 ## License
 
 MIT
