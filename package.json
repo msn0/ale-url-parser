@@ -3,6 +3,9 @@
   "version": "0.12.0",
   "description": "Fast url parser",
   "main": "lib/ale-url-parser.umd.js",
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
     "test": "npm run unit && npm run lint",
     "unit": "ava --verbose",
