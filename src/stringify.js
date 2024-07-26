@@ -1,6 +1,9 @@
 import { encode } from './utils';
 
-export function stringify({ protocol = 'http', host = '', path = [], query = {}, hash }, options = {}) {
+export function stringify(
+    { protocol = 'http', host = '', path = [], query = {}, hash },
+    options = {}
+) {
     let result = '';
 
     if (host) {
@@ -23,14 +26,17 @@ export function stringify({ protocol = 'http', host = '', path = [], query = {},
             keys.sort(options.compareFunction);
         }
         const queryString = keys
-            .map(key => {
+            .filter((k) => query[k] !== undefined)
+            .map((key) => {
                 const encodedKey = encode(key);
                 if (Array.isArray(query[key])) {
-                    return query[key].map(value => `${encodedKey}=${encode(value)}`).join('&');
-                } else if (query[key]) {
-                    return `${encodedKey}=${encode(query[key])}`;
+                    return query[key]
+                        .map((value) => `${encodedKey}=${encode(value)}`)
+                        .join('&');
+                } else if (query[key] === null) {
+                    return `${encodedKey}`;
                 }
-                return encode(key);
+                return `${encodedKey}=${encode(query[key])}`;
             })
             .join('&');
 
